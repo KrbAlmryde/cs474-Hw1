@@ -13,19 +13,14 @@ to generate its Abstract Syntax tree in order to identify operators and operands
 
 ### How do I get set up? ###
 
-* The simplest approach would be to open this IntelliJ project 
-* Configuration
-* Dependencies
-* How to run tests
-* Deployment instructions
+* From the commandline (assuming you are in top level project directory) type the following:
 
-### Contribution guidelines ###
-
-* Writing tests
-* Code review
-* Other guidelines
+        gradle --daemon run
+        
+* If you are operating 
 
 ### Who do I talk to? ###
 
-* Repo owner or admin
+* If you have any specific questions contact me via [email](kyle.almryde@gmail.com)
+* If you have any complaints, please direct them to [this guy](![drmark@uic.edu](https://www.cs.uic.edu/~drmark/index_htm_files/3017.jpg))
 * Other community or team contact
