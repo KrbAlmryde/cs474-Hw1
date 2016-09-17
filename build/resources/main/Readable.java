@@ -44,7 +44,7 @@ public class Readable {
         return -1; // not found
     }
 
-    public int compare(char[] foo, char[] bar) {
+    private int compare(char[] foo, char[] bar) {
         return -1;
     }
 

@@ -1,12 +1,34 @@
 products:
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> build/classes/main/HalsteadComplexity/CompilationUnitParser$$anon$1.class
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> build/classes/main/HalsteadComplexity/CompilationUnitParser.class
+   src/main/scala/HalsteadComplexity/HalsteadMetric.scala -> build/classes/main/HalsteadComplexity/HalsteadMetric.class
+   src/main/scala/HalsteadComplexity/package.scala -> build/classes/main/HalsteadComplexity/package$.class
+   src/main/scala/HalsteadComplexity/package.scala -> build/classes/main/HalsteadComplexity/package.class
+   src/main/scala/Main.scala -> build/classes/main/Main$$anonfun$parseFilesInDir$1.class
+   src/main/scala/Main.scala -> build/classes/main/Main$$anonfun$parseFilesInDir$2.class
    src/main/scala/Main.scala -> build/classes/main/Main$.class
    src/main/scala/Main.scala -> build/classes/main/Main.class
 binary dependencies:
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/org.eclipse.jdt.core/3.10.0/647e19b28c106a63a14401c0f5956289792adf2f/org.eclipse.jdt.core-3.10.0.jar
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.11.1/e11da23da3eabab9f4777b9220e60d44c1aab6a/scala-library-2.11.1.jar
+   src/main/scala/HalsteadComplexity/HalsteadMetric.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar
+   src/main/scala/HalsteadComplexity/HalsteadMetric.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.11.1/e11da23da3eabab9f4777b9220e60d44c1aab6a/scala-library-2.11.1.jar
+   src/main/scala/HalsteadComplexity/package.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar
+   src/main/scala/HalsteadComplexity/package.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.11.1/e11da23da3eabab9f4777b9220e60d44c1aab6a/scala-library-2.11.1.jar
    src/main/scala/Main.scala -> /Library/Java/JavaVirtualMachines/jdk1.8.0_66.jdk/Contents/Home/jre/lib/rt.jar
-   src/main/scala/Main.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.eclipse.jdt/core/3.3.0-v_771/cbb0cad218731ff0cef426e3890a0df702661852/core-3.3.0-v_771.jar
    src/main/scala/Main.scala -> /Users/krbalmryde/.gradle/caches/modules-2/files-2.1/org.scala-lang/scala-library/2.11.1/e11da23da3eabab9f4777b9220e60d44c1aab6a/scala-library-2.11.1.jar
 source dependencies:
+   src/main/scala/HalsteadComplexity/HalsteadMetric.scala -> src/main/scala/HalsteadComplexity/package.scala
+   src/main/scala/Main.scala -> src/main/scala/HalsteadComplexity/CompilationUnitParser.scala
 external dependencies:
 class names:
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> HalsteadComplexity.CompilationUnitParser
+   src/main/scala/HalsteadComplexity/CompilationUnitParser.scala -> HalsteadComplexity.CompilationUnitParser$$anon$1
+   src/main/scala/HalsteadComplexity/HalsteadMetric.scala -> HalsteadComplexity.HalsteadMetric
+   src/main/scala/HalsteadComplexity/package.scala -> HalsteadComplexity.package
+   src/main/scala/HalsteadComplexity/package.scala -> HalsteadComplexity.package$
    src/main/scala/Main.scala -> Main
    src/main/scala/Main.scala -> Main$
+   src/main/scala/Main.scala -> Main$$anonfun$parseFilesInDir$1
+   src/main/scala/Main.scala -> Main$$anonfun$parseFilesInDir$2

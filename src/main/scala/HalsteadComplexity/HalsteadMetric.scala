@@ -1,18 +1,22 @@
 package HalsteadComplexity
 
+import scala.collection.mutable.ArrayBuffer
+
 /**
   * Created by krbalmryde on 9/15/16.
   *
   * HalsteadComplexity.HalsteadMetric computes the metric of the same name
-  * constructor arguments provide the necesasry inputs to
+  * constructor arguments provide the necessary inputs to
   * calculate the software metric
   *
-  * @param n1 Double -- number of distinct operators
-  * @param n2 Double -- number of distinct operands
-  * @param N1 Double -- total number of operators
-  * @param N2 Double -- total number of operands
+  * @param operators ArrayBuffer[String] -- Array of non-unique Operator names
+  * @param operands ArrayBuffer[String]  -- Array of non-unique Operand names
   */
-class HalsteadMetric(n1:Double, n2:Double, N1:Double, N2:Double) {
+class HalsteadMetric(operators:ArrayBuffer[String], operands:ArrayBuffer[String]) {
+    var n1:Double = operands.toSet.size
+    var n2:Double = operators.toSet.size
+    var N1:Double = operators.size
+    var N2:Double = operands.size
 
     // Program Length
     def N(): Double = N1 + N2
