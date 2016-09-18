@@ -74,14 +74,20 @@ This line #18
          
          
 ### Testing ###
- I learned a touch too late about the whole Unit test requirement so there are none to be had. Lame. However, there are plenty of test files that ive worked quite extensively with
- that you are more than welcome to play around with. You can find them here:
+ I learned a touch too late about the whole Unit test requirement (it would have been really helpful if that was 
+ mentioned in the specification of this assignment) so ....there are none to be had. Lame. However, there are plenty of 
+ test files that ive worked quite extensively with that you are more than welcome to play around with. You can find them 
+ here:
  
     HW1/
         src/
             test/
                 resources/    // <--- for Really BIG projects
                 simple/       // <--- for single file applications
+
+
+#### Open Source Application ####
+I chose [jEdit](https://sourceforge.net/projects/jedit/) as my open source application. Its huge. RIP my solid state drive
 
 ### Who do I talk to? ###
 
