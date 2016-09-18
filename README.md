@@ -28,5 +28,6 @@ to generate an Abstract Syntax tree in order to identify operators and operands 
 ### Who do I talk to? ###
 
 * If you have any specific questions contact me via [kyle.almryde@gmail.com](kyle.almryde@gmail.com)
-* If you have any complaints, please direct them to ![drmark@uic.edu](https://www.cs.uic.edu/~drmark/index_htm_files/3017.jpg)
-* Other community or team contact
+* If you have any complaints, please direct them to 
+
+![drmark@uic.edu](https://www.cs.uic.edu/~drmark/index_htm_files/3017.jpg)

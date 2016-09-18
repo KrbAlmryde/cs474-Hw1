@@ -2,13 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d0cf0cb5-bdef-414d-af84-c3a82f85d848" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/classes/main/Main$$anonfun$1.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/resources/Test.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/main/resources/Readable.java" afterPath="$PROJECT_DIR$/src/main/java/Readable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/README.md" afterPath="$PROJECT_DIR$/README.md" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/HalsteadComplexity/CompilationUnitParser.scala" afterPath="$PROJECT_DIR$/src/main/scala/HalsteadComplexity/CompilationUnitParser.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/HalsteadComplexity/HalsteadMetric.scala" afterPath="$PROJECT_DIR$/src/main/scala/HalsteadComplexity/HalsteadMetric.scala" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/scala/Main.scala" afterPath="$PROJECT_DIR$/src/main/scala/Main.scala" />
     </list>
     <ignored path="HW1.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -90,8 +85,8 @@
         <entry file="file://$PROJECT_DIR$/README.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="FIRST">
-              <first_editor relative-caret-position="450">
-                <caret line="30" column="126" selection-start-line="30" selection-start-column="126" selection-end-line="30" selection-end-column="126" />
+              <first_editor relative-caret-position="480">
+                <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
                 <folding />
               </first_editor>
               <second_editor />
@@ -1082,12 +1077,12 @@
       <workItem from="1474044935756" duration="7664000" />
       <workItem from="1474122667805" duration="657000" />
       <workItem from="1474123407199" duration="483000" />
-      <workItem from="1474123907038" duration="33772000" />
+      <workItem from="1474123907038" duration="33834000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="81274000" />
+    <option name="totallyTimeSpent" value="81336000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1515,8 +1510,8 @@
       </provider>
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="FIRST">
-          <first_editor relative-caret-position="450">
-            <caret line="30" column="126" selection-start-line="30" selection-start-column="126" selection-end-line="30" selection-end-column="126" />
+          <first_editor relative-caret-position="480">
+            <caret line="32" column="74" selection-start-line="32" selection-start-column="74" selection-end-line="32" selection-end-column="74" />
             <folding />
           </first_editor>
           <second_editor />
