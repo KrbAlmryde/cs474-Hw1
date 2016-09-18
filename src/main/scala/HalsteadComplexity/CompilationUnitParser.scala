@@ -44,9 +44,6 @@ class CompilationUnitParser() {
         // Set the source
         parser.setSource(source.toCharArray)
 
-        // Lets me know things are working
-        println("\n\nParse is running!\n")
-
         // Create our CompilationUnit
         val cu = parser.createAST(null).asInstanceOf[CompilationUnit]
 
@@ -54,35 +51,6 @@ class CompilationUnitParser() {
         // Begin tree traversal
         cu.accept(new ASTVisitor() {
 
-            // Our Method Declartion Node handler
-            override def visit(node: MethodDeclaration):Boolean = {
-                // Clears the names Hash so we start clean and clear
-                declared.clear()
-                val name:SimpleName = node.getName
-                operators+= name.toString
-                println("\n\nMethod-def:   \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
-
-                // In order to capture the Parameter names, we have traverse the children
-                node.accept(new ASTVisitor() {
-                    // Just want to catch the SingleVariableDeclaration
-                    override def visit(node: SingleVariableDeclaration): Boolean = {
-                        val name: SimpleName = node.getName
-                        declared.put(name.getIdentifier, cu.getLineNumber(name.getStartPosition))
-
-                        System.out.println("\tParameter of '" + name.getIdentifier + declared + "' at line " + cu.getLineNumber(name.getStartPosition))
-                        false
-                    }
-                })
-                true
-            }
-
-
-            override def visit(node: MethodInvocation): Boolean = {
-                val name:String = node.getName.getIdentifier
-                operators+= name.toString
-                println("\t\tMethodInvke:   \t'" + name + "': " + cu.getLineNumber( node.getStartPosition ))
-                true
-            }
 
             // Capture and Variables declared, with or without values assigned.
             // In the case of variables WITH an assignment, we will also count that
@@ -95,96 +63,147 @@ class CompilationUnitParser() {
                 try {
                     val value = node.getInitializer.toString
                     if (value != "null")
-                        // This is a special case in which we also count the "=" sign
-                        // since we know that a value has been assigned
+                    // This is a special case in which we also count the "=" sign
+                    // since we know that a value has been assigned
                         operators+="="
 
-                    println("\tDeclaration of '" + name + ":" + value + "' at line " + lineNum)
+                    //                        println("\tDeclaration of '" + name + ":" + value + "' at line " + lineNum)
                 }
                 // Something weird was encountered...
                 catch {
-                    case npe: NullPointerException => println("\t\t....moving right along!" + npe)
-                    case e => println("\t\t....Something fucked up...!" +  e)
+                    case npe: NullPointerException =>
+                    case e =>
                 }
                 // No matter, STAY THE COURSE!
                 finally {
                     operands+=name
-                    declared.put(name, cu.getLineNumber(node.getStartPosition))
+                    declared.put(name, lineNum)
                 }
 
                 true
             }
 
+            // Captures identifier usage in-code
             override def visit(node: SimpleName): Boolean = {
                 val name:String = node.getIdentifier
                 val lineNum:Int = cu.getLineNumber(node.getStartPosition)
                 if (declared.contains(name) && declared(name) != lineNum ) {
                     operands+=name
-                    System.out.println("\t\tUsage of '" + name + "' at line " + lineNum)
+                    //                    System.out.println("\t\tUsage of '" + name + "' at line " + lineNum)
                 }
                 true
             }
 
+
+            override def visit(node: NumberLiteral): Boolean = {
+                val name:String = node.getToken
+                //                println("\t\tNumberLiteral:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+                operands+= name
+                true
+            }
+
+            override def visit(node: StringLiteral): Boolean = {
+                val name:String = node.getLiteralValue
+                //                println("\t\tStringLiteral:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+                operands+= name
+                true
+            }
+
+
+
+            /*==============================================*/
+             //            START OF OPERATORS
+            /*==============================================*/
+
+
+            // Our Method Declartion Node handler
+            override def visit(node: MethodDeclaration):Boolean = {
+                // Clears the names Hash so we start clean and clear
+                declared.clear()
+
+                val name:SimpleName = node.getName
+                operators+= name.toString
+
+                // In order to capture the Parameter names, we have traverse the children
+                node.accept(new ASTVisitor() {
+                    // Just want to catch the SingleVariableDeclaration
+                    override def visit(node: SingleVariableDeclaration): Boolean = {
+                        val name: SimpleName = node.getName
+                        declared.put(name.getIdentifier, cu.getLineNumber(name.getStartPosition))
+
+                        //                        System.out.println("\tParameter of '" + name.getIdentifier + declared + "' at line " + cu.getLineNumber(name.getStartPosition))
+                        false
+                    }
+                })
+                true
+            }
+
+            // Captures method invocations
+            override def visit(node: MethodInvocation): Boolean = {
+                val name:String = node.getName.getIdentifier
+                operators+= name.toString
+                //                println("\t\tMethodInvke:   \t'" + name + "': " + cu.getLineNumber( node.getStartPosition ))
+                true
+            }
+
             override def visit(node: IfStatement):Boolean = {
-                println("\t\tIF:           \tIF-else: " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tIF:           \tIF-else: " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "if-else"
                 true
             }
 
             override def visit(node: WhileStatement):Boolean = {
-                println("\t\tWhile-loop:   \tWhile: " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tWhile-loop:   \tWhile: " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "while()"
 
                 true
             }
 
             override def visit(node: ForStatement):Boolean = {
-                println("\tFor-loop:   \tFor: " + cu.getLineNumber(node.getStartPosition) )
+//                println("\tFor-loop:   \tFor: " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "for(;;)"
                 true
             }
 
             override def visit(node: EnhancedForStatement):Boolean = {
-                println("\t\tEnhanced-For: \tFor: " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tEnhanced-For: \tFor: " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "for(:)"
 
                 true
             }
 
-//            override def visit(node: ExpressionStatement):Boolean = {
-//                println("\n\tExpressState: \t" + node.getExpression + " " + cu.getLineNumber(node.getStartPosition) )
-//                //                node.accept(new ASTVisitor() {
-////                    override def visit(fd:VariableDeclarationFragment): Boolean = {
-////                        println("   " + fd.getName + " in Expression: ");
-////                        false
-////                    }
-////                })
-//
-//                true
-//            }
-
             override def visit(node: ConditionalExpression):Boolean = {
-                println("\tConditional:  \t?-: : " + cu.getLineNumber(node.getStartPosition) )
+//                println("\tConditional:  \t?-: : " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "?:"
                 true
             }
 
             override def visit(node: ParenthesizedExpression): Boolean = {
-                println("Parenthesize: \t(): "+ cu.getLineNumber(node.getStartPosition) )
+//                println("Parenthesize: \t(): "+ cu.getLineNumber(node.getStartPosition) )
                 operators+= "()"
                 true
             }
 
             override def visit(node: Block): Boolean = {
                 val names = node.statements.asScala
-                println("Block:        \t{}: " + cu.getLineNumber(node.getStartPosition) )
+//                println("Block:        \t{}: " + cu.getLineNumber(node.getStartPosition) )
                 operators+= "{}"
+                true
+            }
+
+            override def visit(node: SwitchCase): Boolean = {
+                operators+="case-default"
+                true
+            }
+
+            override def visit(node: SwitchStatement): Boolean = {
+                operators+="switch"
                 true
             }
 
             override def visit(node: PrimitiveType): Boolean = {
                 val name:String = node.getPrimitiveTypeCode.toString
-                println("\t\tPrimitiveType:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tPrimitiveType:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+= name
                 true
             }
@@ -192,14 +211,15 @@ class CompilationUnitParser() {
 
             override def visit(node: BooleanLiteral): Boolean = {
                 val name:String = node.booleanValue.toString
-                println("\t\tBooleanLiteral:\t" + node.booleanValue + ": " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tBooleanLiteral:\t" + node.booleanValue + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+= name
                 true
             }
 
+            // captures all Assignment operations: '='
             override def visit(node: Assignment): Boolean = {
                 val name:String = node.getOperator.toString
-                println("\t\tAssignment:   \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+//                println("\t\tAssignment:   \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+=name
                 true
             }
@@ -208,7 +228,7 @@ class CompilationUnitParser() {
             // This will grab all INFIX operators of the following:
             override def visit(node: InfixExpression): Boolean = {
                 val name:String = node.getOperator.toString
-                println("\t\tInfixExpress: \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+                //                println("\t\tInfixExpress: \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+=name
                 true
             }
@@ -216,7 +236,7 @@ class CompilationUnitParser() {
             // This will grab all POSTFIX operators of the following:
             override def visit(node: PostfixExpression): Boolean = {
                 val name:String = node.getOperator.toString
-                println("\t\tPostExpress:  \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+                //                println("\t\tPostExpress:  \t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+=name
                 true
             }
@@ -224,72 +244,29 @@ class CompilationUnitParser() {
 
             override def visit(node: PrefixExpression): Boolean = {
                 val name:String = node.getOperator.toString
-                println("\t\tPreFixExpress:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
+                //                println("\t\tPreFixExpress:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
                 operators+=name
                 true
             }
 
             override def visit(node: ParameterizedType): Boolean = {
                 val name:String = node.getType.toString
-                println("\t\tParameterizedType:   \t'" + node + "': " + cu.getLineNumber( node.getStartPosition ))
+                //                println("\t\tParameterizedType:   \t'" + node + "': " + cu.getLineNumber( node.getStartPosition ))
                 operators+=name
                 true
             }
-
 
             override def visit(node: SimpleType): Boolean = {
                 val name:String = node.getName.getFullyQualifiedName
-                println("\t\tSimpleType:   \t'" + node + "': " + cu.getLineNumber( node.getStartPosition ))
+                //                println("\t\tSimpleType:   \t'" + node + "': " + cu.getLineNumber( node.getStartPosition ))
                 operators+=name
                 true
             }
 
 
-            /*
-                    START OF OPERANDS
-             */
-
-            override def visit(node: NumberLiteral): Boolean = {
-                val name:String = node.getToken
-                println("\t\tNumberLiteral:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
-                operands+= name
-                true
-            }
-
-            override def visit(node: StringLiteral): Boolean = {
-                val name:String = node.getLiteralValue
-                println("\t\tStringLiteral:\t" + name + ": " + cu.getLineNumber(node.getStartPosition) )
-                operands+= name
-                true
-            }
-
-
-
-
-
-
-            //            override def visit(node: SimpleName): Boolean = {
-            ////                val name:String = node.getIdentifier
-            ////                false
-            ////            }
-            //
-            //                val binding:IBinding  = node.resolveBinding
-            //
-            //                def isInstance(x:Any): Boolean = x match {
-            //                    case b: IVariableBinding => true
-            //                    case _ => false
-            //                }
-            //
-            //                if ( isInstance(binding) ) {
-            ////                    println("SimpleName:   \t" + node + "': " + cu.getLineNumber( node.getStartPosition ) )
-            ////                    val variable:IVariableBinding  = binding.asInstanceOf[IVariableBinding];
-            //                    System.out.println("Check!: " + node.toString)
-            //
-            //                }
-            //
-            //                true
-            //            }
-
+            /*----------------------------
+             *      START OF OPERANDS
+             ----------------------------*/
 
         })
 

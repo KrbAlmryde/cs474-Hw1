@@ -15,7 +15,7 @@ object Main extends App {
 
     // Traverse the supplied directory and extract our Java source files
     // These will be stored in an array
-    val sourceFiles = parseFilesInDir( new File("./src/main/java"))
+    val sourceFiles = parseFilesInDir( new File("./src/test/simple/Readable.java"))
 
     // Parse each source file with our CompilationUnityParser
     sourceFiles.foreach( f => {

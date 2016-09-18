@@ -1,4 +1,5 @@
 import java.io.File
+import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by krbalmryde on 9/15/16.
@@ -38,8 +39,12 @@ package object HalsteadComplexity {
       * @return Array[String]
       */
     def parseFilesInDir(dir: File): Array[File] = {
-        val files = dir.listFiles
-        val allFiles = files ++ files.filter(_.isDirectory).flatMap(parseFilesInDir)
-        allFiles.filter( f => """.*\.java$""".r.findFirstIn(f.getName).isDefined)
+        if (dir.isDirectory) {
+            val files = dir.listFiles
+            val allFiles = files ++ files.filter(_.isDirectory).flatMap(parseFilesInDir)
+            allFiles.filter( f => """.*\.java$""".r.findFirstIn(f.getName).isDefined)
+        }
+
+        List( dir ).toArray
     }
 }

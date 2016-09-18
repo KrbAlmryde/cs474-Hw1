@@ -13,8 +13,8 @@ import scala.collection.mutable.ArrayBuffer
   * @param operands ArrayBuffer[String]  -- Array of non-unique Operand names
   */
 class HalsteadMetric(operators:ArrayBuffer[String], operands:ArrayBuffer[String]) {
-    var n1:Double = operands.toSet.size
-    var n2:Double = operators.toSet.size
+    var n1:Double = operators.toSet.size
+    var n2:Double = operands.toSet.size
     var N1:Double = operators.size
     var N2:Double = operands.size
 
