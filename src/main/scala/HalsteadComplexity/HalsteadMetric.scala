@@ -43,6 +43,7 @@ class HalsteadMetric(operators:ArrayBuffer[String], operands:ArrayBuffer[String]
     def B(): Double = math.pow(E(), 2/3) / 3000
     def B2(): Double = V / 3000
 
+    // Incase one would like to re-parse some files without having to create a new Instance
     def reset(operators:ArrayBuffer[String], operands:ArrayBuffer[String] ): Unit = {
         n1 = operands.toSet.size
         n2 = operators.toSet.size
@@ -50,6 +51,7 @@ class HalsteadMetric(operators:ArrayBuffer[String], operands:ArrayBuffer[String]
         N2 = operands.size
     }
 
+    // spits out the results of the application
     def results(): String = {
         "\nn1: number of Distinct Operators: " + n1 +
         "\nn2: number of Distinct Operands: " + n2 +

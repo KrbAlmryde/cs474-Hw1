@@ -38,7 +38,7 @@ directory
         
         HW1/
             src/
-                main/
+                test/
                     resources/   // <--- HERE!!
                     
 The application already points to the directory and will begin parsing immediately. The application does not make any 
@@ -47,14 +47,14 @@ another called **jedit-svn**. Unless you make explict effort to Target a particu
  
         HW1/
             src/
-                scala/
-                    Main.scala
+                main/
+                    scala/
+                        Main.scala
         
 This line #18        
 
        val sourceFiles = parseFilesInDir( new File("/path/to/your/test/repository") )
           
-
  
 ####Setting up from IntelliJ ####
 
@@ -72,6 +72,17 @@ This line #18
 
         gradle --daemon run
          
+         
+### Testing ###
+ I learned a touch too late about the whole Unit test requirement so there are none to be had. Lame. However, there are plenty of test files that ive worked quite extensively with
+ that you are more than welcome to play around with. You can find them here:
+ 
+    HW1/
+        src/
+            test/
+                resources/    // <--- for Really BIG projects
+                simple/       // <--- for single file applications
+
 ### Who do I talk to? ###
 
 * If you have any specific questions contact me via [kyle.almryde@gmail.com](kyle.almryde@gmail.com)
