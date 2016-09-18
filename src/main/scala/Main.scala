@@ -12,16 +12,16 @@ import HalsteadComplexity._
 object Main extends App {
 
     val cuParser = new CompilationUnitParser()
-    cuParser.parse(Source.fromFile("./src/main/resources/Readable.java").mkString)
 
     // Traverse the supplied directory and extract our Java source files
     // These will be stored in an array
-    val sourceFiles = parseFilesInDir( new File("./src/main/resources"))
+    val sourceFiles = parseFilesInDir( new File("./src/main/java"))
 
     // Parse each source file with our CompilationUnityParser
     sourceFiles.foreach( f => {
         println(f)
         cuParser.parse(Source.fromFile(f).mkString)
     })
-
+    println("Parsed " + sourceFiles.length + " files!")
+    cuParser.computeMetrics()
 }

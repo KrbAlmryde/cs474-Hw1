@@ -43,34 +43,32 @@ class HalsteadMetric(operators:ArrayBuffer[String], operands:ArrayBuffer[String]
     def B(): Double = math.pow(E(), 2/3) / 3000
     def B2(): Double = V / 3000
 
+    def reset(operators:ArrayBuffer[String], operands:ArrayBuffer[String] ): Unit = {
+        n1 = operands.toSet.size
+        n2 = operators.toSet.size
+        N1 = operators.size
+        N2 = operands.size
+    }
 
-    def results(): Unit = {
-        println("n1: number of Distinct Operators: " + n1)
-        println("n2: number of Distinct Operands: " + n2)
-
-        println("N1: Total number of Operators: " + N1)
-        println("N2: Total number of Operands: " + N2)
-
-        println("-----------------------------")
-
-        println("Program Vocabulary: " + n)
-        println("Program Length: " + N)
-        println("Calculated program length: " + _N)
-        println("Program Volume: " + V)
-        println("Program Difficulty: " + D)
-        println("Program Effort: " + E)
-
-        println("-----------------------------")
-
-        println("Time required to program: " + T + " seconds")
-
-        println("-----------------------------")
-
-        println("Number of delivered bugs: ")
-        println("\tMethod 1: " + B)
-        println("\tMethod 2: " + B2)
-
-        println("-----------------------------")
+    def results(): String = {
+        "\nn1: number of Distinct Operators: " + n1 +
+        "\nn2: number of Distinct Operands: " + n2 +
+        "\nN1: Total number of Operators: " + N1 +
+        "\nN2: Total number of Operands: " + N2 +
+        "\n\n-----------------------------" +
+        "\n\nProgram Vocabulary: " + n +
+        "\nProgram Length: " + N +
+        "\nCalculated program length: " + _N +
+        "\nProgram Volume: " + V +
+        "\nProgram Difficulty: " + D +
+        "\nProgram Effort: " + E +
+        "\n\n-----------------------------" +
+        "\n\nTime required to program: " + T + " seconds" +
+        "\n\n-----------------------------" +
+        "\n\nNumber of delivered bugs: " +
+        "\n\tMethod 1: " + B +
+        "\n\tMethod 2: " + B2 +
+        "\n\n-----------------------------"
     }
 
 

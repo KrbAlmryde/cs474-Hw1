@@ -11,13 +11,18 @@ import org.eclipse.jdt.core.dom.AST;
 
 public class Readable {
 
-    /**
-     * @param args
-     */
     public static void main(String[] args) {
+        int a;
+        int b;
+        int c;
+        a=1;
+        b=2;
+        c=3;
+        a=a+c;
+
         System.out.println("Hello World");
         List list = new ArrayList();
-        int a = 123;
+        a = 123;
         System.out.println(a + " " + list);
     }
 
@@ -25,6 +30,9 @@ public class Readable {
         int bot = 0;
         int top = n - 1;
         int mid, cmp;
+        float f_foo;
+        long l_bar;
+        double d_bag = 10;
         while (bot <= top) {
             mid = (bot + top) / 2;
             if (table[mid] == item)
@@ -47,5 +55,23 @@ public class Readable {
     private int compare(char[] foo, char[] bar) {
         return -1;
     }
+//
+    private boolean foobar() { return (0 > 1)? true: false; }
+
+    private void sort ( int[] a, int n ) {
+        int i, j, t;
+        if ( n < 2 ) return;
+        for ( i=0 ; i < n-1; i++ ) {
+            for ( j=i+1 ; j < n ; j++ ) {
+                if ( a[i] > a[j] ) {
+                    t = a[i];
+                    a[i] = a[j];
+                    a[j] = t;
+                }
+            }
+        }
+    }
+
+
 
 }
