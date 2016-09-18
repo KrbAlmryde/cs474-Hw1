@@ -39,12 +39,8 @@ package object HalsteadComplexity {
       * @return Array[String]
       */
     def parseFilesInDir(dir: File): Array[File] = {
-        if (dir.isDirectory) {
-            val files = dir.listFiles
-            val allFiles = files ++ files.filter(_.isDirectory).flatMap(parseFilesInDir)
-            allFiles.filter( f => """.*\.java$""".r.findFirstIn(f.getName).isDefined)
-        }
-
-        List( dir ).toArray
+        val files = dir.listFiles
+        val allFiles = files ++ files.filter(_.isDirectory).flatMap(parseFilesInDir)
+        allFiles.filter( f => """.*\.java$""".r.findFirstIn(f.getName).isDefined)
     }
 }
