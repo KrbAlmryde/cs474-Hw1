@@ -14,10 +14,11 @@ to generate an Abstract Syntax tree in order to identify operators and operands 
 ### How do I get set up? ###
 
 ####Setting up from IntelliJ ####
-    1) If no project is currently open in IntelliJ IDEA, click **Import Project** on the Welcome screen. Otherwise, select **File | New | Project from Existing Sources**.
-    2) In the dialog that opens, select the directory that contains the project to be imported, or a file that contains an appropriate project description. Click **OK**.
-    3) On the first page of the **Import Project** wizard, select Gradle, and click **Next**. (This page is not shown if IntelliJ IDEA has guessed what you are importing.)
-    4) On the next page of the wizard, specify Gradle project settings and global Gradle settings, click **Finish**.
+
+1) If no project is currently open in IntelliJ IDEA, click **Import Project** on the Welcome screen. Otherwise, select **File | New | Project from Existing Sources**.
+2) In the dialog that opens, select the directory that contains the project to be imported, or a file that contains an appropriate project description. Click **OK**.
+3) On the first page of the **Import Project** wizard, select Gradle, and click **Next**. (This page is not shown if IntelliJ IDEA has guessed what you are importing.)
+4) On the next page of the wizard, specify Gradle project settings and global Gradle settings, click **Finish**.
 
 ####From the commandline 
 
